@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import RoutesWrapper from "./routes/RoutesWrapper";
+import { QueryClientProvider } from "@tanstack/react-query";
+import queryClient from "./constants/query-client";
+import { AuthProvider } from "./contexts/AuthContext";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { SnackbarProvider } from "notistack";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="w-full h-screen bg-teal-500 text-gray-200">
+      <SnackbarProvider
+        maxSnack={3}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+        autoHideDuration={3000}
+        className="bg-white"
+      >
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <AuthProvider>
+            <QueryClientProvider client={queryClient}>
+              <RoutesWrapper />
+            </QueryClientProvider>
+          </AuthProvider>
+        </LocalizationProvider>
+      </SnackbarProvider>
     </div>
   );
-}
+};
 
 export default App;
