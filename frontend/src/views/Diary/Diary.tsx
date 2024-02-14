@@ -39,7 +39,7 @@ const Diary: React.FC = () => {
   });
 
   const changeIsOpenStateHandler = () => {
-    setIsOpenModal(!isOpenModal);
+    setIsOpenModal((previousIsOpen) => !previousIsOpen);
   };
 
   const onClickEditMode = () => {

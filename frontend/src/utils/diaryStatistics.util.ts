@@ -154,3 +154,7 @@ export const getDiaryStatisticForDateRange = (
     ),
   };
 };
+
+const getDataForChart = () => {
+  
+}

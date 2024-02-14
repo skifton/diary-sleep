@@ -14,6 +14,7 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { DateRange } from "react-date-range";
 import SStatisticsEvaluation from "../../components/SStatisticsEvaluation";
+import SChart from "../../components/SChart";
 
 const SleepData: React.FC = () => {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
@@ -38,6 +39,7 @@ const SleepData: React.FC = () => {
       )
     )
   );
+  const dataForChart = '';
 
   const onClickTodayButtonHandler = () => {
     setStatistic(
@@ -208,6 +210,7 @@ const SleepData: React.FC = () => {
           />
         </div>
       )}
+      <SChart />
     </div>
   );
 };
